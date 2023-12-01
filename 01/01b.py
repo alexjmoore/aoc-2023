@@ -27,7 +27,6 @@ def checkpos(s,n):
 
 with open('input.txt') as input:
     while line := input.readline().strip():
-        print(f"line:{line}")
         first = last = 0
         while len(line) > 0:
             if first == 0:
