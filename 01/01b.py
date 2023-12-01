@@ -14,10 +14,10 @@ conversion = {
 
 PATTERN = r'^one|two|three|four|five|six|seven|eight|nine'
 
-def checkpos(s,n):
-    if s[0].isdigit(): return int(line[0])
-    if m := re.match(PATTERN, s): return(conversion[m.group(0)])
-    return n
+def checkpos(string, currnumber):
+    if string[0].isdigit(): return int(string[0])
+    if m := re.match(PATTERN, string): return(conversion[m.group(0)])
+    return currnumber
 
 total = 0
 with open('input.txt') as input:
