@@ -1,9 +1,3 @@
-MAX_COLOUR_COUNT = {
-    "red": 12,
-    "green": 13,
-    "blue": 14,
-}
-
 total = 0
 with open('input.txt') as input:
     while line := input.readline().strip():
