@@ -2,30 +2,14 @@ import collections
 import math
 
 def checkForSymbolandCog(lines, x, y):
-    if x > 0: 
-        c = lines[y][x-1]
-        if isSymbol(c): return (True, isCog(c), x-1, y)
-    if y > 0:
-        c = lines[y-1][x]
-        if isSymbol(c): return (True, isCog(c), x, y-1)
-    if x < len(lines[y]) - 1:
-        c = lines[y][x+1]
-        if isSymbol(c): return (True, isCog(c), x+1, y)
-    if y < len(lines) - 1: 
-        c = lines[y+1][x]
-        if isSymbol(c): return (True, isCog(c), x, y+1)
-    if y > 0 and x > 0: 
-        c = lines[y-1][x-1]
-        if isSymbol(c): return (True, isCog(c), x-1, y-1)
-    if y > 0 and x < len(lines[y]) - 1: 
-        c = lines[y-1][x+1]
-        if isSymbol(c): return (True, isCog(c), x+1, y-1)
-    if y < len(lines) - 1 and x > 0: 
-        c = lines[y+1][x-1]
-        if isSymbol(c): return (True, isCog(c), x-1, y+1)
-    if y < len(lines) - 1 and x < len(lines[y]) - 1:
-        c = lines[y+1][x+1]
-        if isSymbol(c): return (True, isCog(c), x+1, y+1)
+    rows, cols = range(len(lines)),range(len(lines[0]))
+    offsets = [(-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)]
+    for dy,dx in offsets:
+        ny, nx = y+dy, x+dx
+        if ny in rows and nx in cols:
+            print(f"x:{nx},y:{ny}")
+            c = lines[ny][nx]
+            if isSymbol(c): return (True, isCog(c), nx, ny)
     return (False, False, 0, 0)
 
 def isSymbol(char):
@@ -36,7 +20,7 @@ def isCog(char):
 
 total = 0
 allCogs = collections.defaultdict(list)
-with open('input.txt') as input:
+with open('testinput.txt') as input:
     lines = input.read().splitlines() 
     for y in range(len(lines)):
         currNumber = ""
