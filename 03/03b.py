@@ -7,7 +7,6 @@ def checkForSymbolandCog(lines, x, y):
     for dy,dx in offsets:
         ny, nx = y+dy, x+dx
         if ny in rows and nx in cols:
-            print(f"x:{nx},y:{ny}")
             c = lines[ny][nx]
             if isSymbol(c): return (True, isCog(c), nx, ny)
     return (False, False, 0, 0)
@@ -20,7 +19,7 @@ def isCog(char):
 
 total = 0
 allCogs = collections.defaultdict(list)
-with open('testinput.txt') as input:
+with open('input.txt') as input:
     lines = input.read().splitlines() 
     for y in range(len(lines)):
         currNumber = ""
